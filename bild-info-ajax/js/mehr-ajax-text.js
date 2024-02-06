@@ -1,4 +1,4 @@
-var resObj = erzXHRObjekt();
+var resObj = fXHR();
 
 function sndReq(i) {
   switch (i) {

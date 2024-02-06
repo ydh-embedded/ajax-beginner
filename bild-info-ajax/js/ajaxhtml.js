@@ -1,4 +1,4 @@
-var resObj = erzXHRObjekt();
+var resObj = fXHR();
 
 function sndReq() {
     resObj.open( 'get', './txt/antwort-html.txt', true );
