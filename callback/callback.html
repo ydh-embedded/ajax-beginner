@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+    <header><h1>callbackfunction</h1></header>
+
+    <button id="klick">Klick</button>
+
+    <div id="antwort"></div>
+
+    <script>
+        const klick =document.querySelector ("#klick");
+        const antwort =document.querySelector ("#antwort");
+
+        function antworte(t) {
+            antwort
+        }
+
+        klick.onclick = antwort;        // functions Referenz
+
+
+    </script>
+
+    <script>
+        const klick =document.querySelector ("#klick");
+        const antwort2 =document.querySelector ("#antwort");
+
+        function antworte(t) {
+            antwort
+        }
+
+        klick.onclick = function() {    // anonyme function mit parameter t
+            antworte(text);
+        }
+
+
+    </script>
+</body>
+</html>
