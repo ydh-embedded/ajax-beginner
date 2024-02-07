@@ -6,15 +6,6 @@ function handleResponse() {
     }
 }
 
-function sndReqGET() {
-    // Parameter zum Senden in Variable ablegen
-    var params = "user=admin&passwort=geheim";
-    
-    // GET-Verbindung öffnen
-    resObj.open( "get" , "ajax.php?" + params, true);
-    resObj.onreadystatechange = handleResponse;
-    resObj.send(null);
-}
 
 function sndReqPOST() {
     // Parameter zum Senden an Variable ablegen
@@ -24,16 +15,16 @@ function sndReqPOST() {
     resObj.open("post" , "ajax.php" , true );
     
     // Header-Info zum Mime-Type der gesendeten Parameter festlagen
-    resObj
+    resObj.setRequestHeader( "Content-type" , "application/x-www-form-urlencoded");
     
     // Header-Info zur Länge der gesendeten Daten festlegen
-    
+    resObj.setRequestHeader( "Centent-length" , params.length );
     
     // Funktion referenzieren bei Änderung des Status der Server-Antwort
-    
+    resObj.onreadystatechange = handleResponse;
     
     // Daten mit angehängten Parametern senden
-    
+    resObj.send( params );
 }
 
 function init() {
