@@ -3,7 +3,7 @@ const resObj = erzXHRObjekt();                                          // var r
 function sndReq() {                                                     // Callback-Function
     resObj.onreadystatechange = handleResponse;                         // Ereignisshandler onreadystatechange
 
-    resObj.open( 'get' , 'antwort.txt' , true );                        // Wir übergeben der Methode open folgende parameter get , antwort.txt , asynchron aktivieren mit true
+    resObj.open( 'get' , 'antwort-html.txt' , true );                        // Wir übergeben der Methode open folgende parameter get , antwort.txt , asynchron aktivieren mit true
 
     resObj.send( null );                                                // Hier würde bei der POST außer der Anfrage noch mehr stehen können (statt null)
 
