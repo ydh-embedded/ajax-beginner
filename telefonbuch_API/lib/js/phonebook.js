@@ -1,4 +1,6 @@
-const resObj = new XMLHttpRequest();
+/* const resObj = new XMLHttpRequest(); */
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const search = document.querySelector("#search");
     const LIST = document.querySelector("#LIST");
