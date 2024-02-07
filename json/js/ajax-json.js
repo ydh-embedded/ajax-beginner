@@ -1,4 +1,4 @@
-var resObj = erzXHRObjekt();
+var resObj = fXHR();
 
 function sndReq( i ) {
     resObj.open( 'get', 'info-json.txt', true );
@@ -10,8 +10,10 @@ function sndReq( i ) {
 
 function handleResponse( i ) {
     var daten = null;
-    if( resObj.readyState == 4 && resObj.status === 200 ) {       
-        
+    if( resObj.readyState == 4 && resObj.status === 200 ) {
+        daten = JSON.parse( resObj.responseText );
+
+        document.getElementById("info" + i ).innerHTML = daten.info[i];
     }
 }
 
