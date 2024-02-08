@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded" , _ => {
 //#region /* functionen */
 function fnCallPHP(){
     let sInputValue = stringInput.value;
-    let sURI        = "includes/db.php?q=" + encodeURIComponent ( sInputValue );
+    let sURI        = "../includes/db.php?q=" + encodeURIComponent ( sInputValue );
     console.log('Wir geben sURI an: ' + sURI);
     
 /*  objXHR.open     ( "post" , sURI , true ); */

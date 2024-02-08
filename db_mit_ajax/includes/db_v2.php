@@ -15,7 +15,7 @@ $sSQL = '../db/tbl_persons.sql';
 $db = new PDO('mysql:host=localhost;dbname=testdb;charset=utf8', 'username', 'password');
 
 // Execute the SQL commands in the file
-$stmt = $db->query(file_get_contents($sSQL));
+
 
 $arrayOutput = array();
 $i = 0;
