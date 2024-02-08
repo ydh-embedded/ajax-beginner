@@ -18,7 +18,7 @@ fetch("includes/db.php")
             const selectedPersonId = personSelect.value;
 
             // Fetch the information for the selected person
-            fetch("get-person-info.php?id=" + selectedPersonId)
+            fetch("includes/db.php?id=" + selectedPersonId)
                 .then(response => response.text())
                 .then(data => {
                     // Display the person information

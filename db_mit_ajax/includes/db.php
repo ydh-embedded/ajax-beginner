@@ -1,5 +1,5 @@
 <?php
-
+#region Server-Verbindung
 $servername = "localhost";                                                      // Wir stellen die Datenbank verbindung her
 $username   = "ajax-user";
 $password   = "+Schenker1";
@@ -11,14 +11,17 @@ $UpLink = new mysqli($servername, $username, $password, $dbname);               
 if ($UpLink->connect_error) {                                                   // Wir testen den UpLink
     die("Verbindung fehlgeschlagen: " . $UpLink->connect_error);
 }
+#endregion
 
-// Function to retrieve person information from the database
 function getPersonInfo($person_id) {
+
     global $UpLink;
+
     $sql = "SELECT * FROM tbl_persons WHERE perso_id = $person_id";
     $result = $UpLink->query($sql);
 
     if ($result->num_rows > 0) {
+
         $row = $result->fetch_assoc();
         return "<table>
                     <tr>
@@ -37,13 +40,43 @@ function getPersonInfo($person_id) {
                     </tr>
                 </table>";
     } else {
-        return "No person found.";
+        return "Kein Personal gefunden";
     }
 }
 
-// Example usage:
-$person_id = $_GET['person_id']; // Get the person ID from the AJAX request
-echo getPersonInfo($person_id); // Output the person information
+function outputPersonInfo($stmt){
+
+  $arrayOutput = array();
+  $i = 0 ;
+  $q = 0 ;
+
+if ($stmt) {
+ 
+ while ($arrayROW = $stmt->fetch(PDO::FETCH_ASSOC)) {            // wir lesen die Reihen aus
+   if ($i === 0) {
+        $i++;
+        continue;
+   }
+   
+   if (preg_match("/^$q/i", $arrayROW[1]) || preg_match("/^$q/i", $arrayROW[2])) {
+       $arrayOutput[] = array(
+            'perso_id'          => $arrayROW[1],
+            'perso_firstname'   => $arrayROW[2],
+            'perso_lastname'    => $arrayROW[3],
+            'perso_age'         => $arrayROW[4],
+            'perso_hometown'    => $arrayROW[5],
+            'perso_job'         => $arrayROW[6]
+       );
+   }
+ }
+} else {
+    echo "Unable to execute the SQL commands";
+}
+
+echo json_encode($arrayOutput);
+
+$db = null;
+}
+
 
 $UpLink->close();
-?>
