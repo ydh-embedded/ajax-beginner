@@ -1,8 +1,9 @@
-/* variablen und constanten */
+//#region /* variablen und constanten */
 const objXHR = new XMLHttpRequest();
 let stringInput     = ""    ;
 let stringOutput    = ""    ;
-/* event Listener */
+//#endregion
+//#region /* event Listener */
 document.addEventListener("DOMContentLoaded" , _ => {
     stringInput = document.querySelector("#input") ;
     stringOutput = document.querySelector("#output") ;
@@ -10,7 +11,8 @@ document.addEventListener("DOMContentLoaded" , _ => {
     stringInput.addEventListener("keyup" , fnCallPHP)
 
 })
-/* functionen */
+//#endregion
+//#region /* functionen */
 function fnCallPHP(){
     let sInputValue = stringInput.value;
     let sURI        = "includes/plz.php?q=" + encodeURIComponent ( sInputValue );
@@ -47,3 +49,4 @@ function fnUpdatePage(){
         stringOutput = "kein json String wurde erzeugt";
     }
 }
+//#endregion
