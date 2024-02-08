@@ -1,7 +1,7 @@
 //#region /* variablen und constanten */
 const objXHR = new XMLHttpRequest();
-let stringInput     = ""    ;
-let stringOutput    = ""    ;
+let stringInput             = ""    ;
+let stringElementOutput    = ""    ;
 //#endregion
 //#region /* event Listener */
 document.addEventListener("DOMContentLoaded" , _ => {
@@ -29,24 +29,18 @@ function fnUpdatePage(){
         if( objResponse = JSON.parse ( objXHR.responseText)){
             console.log('Der json String konnte erzeugt werden');
 
-            for( objROW in objResponse){
+            for( intROW in objResponse){
                 stringOutput += "<tr>";
-
-
-
-
-
-
-                stringOutput += "</tr>";
+                stringOutput += "<td>" + objResponse[intROW].ort        + "</td>";
+                stringOutput += "<td>" + objResponse[intROW].plz        + "</td>";
+                stringOutput += "<td>" + objResponse[intROW].bundesland + "</td>";
+                stringOutput += "</td>";
             }
-
-
-
-
-
         }
+        
     } catch(error){
         stringOutput = "kein json String wurde erzeugt";
     }
+    stringElementOutput.innerHTML = stringOutput ;
 }
 //#endregion

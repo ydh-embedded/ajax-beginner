@@ -1,58 +1,35 @@
 <?php
-    if( ! empty( $_GET ) ) {
-        if ( empty ( $_GET['val']) ) {
-            echo '{ "0":"keine Eingabe" }';
-            exit;
+#region wir prüfen 
+if(  empty( $_GET ) ) {
+    header('Location: ../index.html');
+    } else {
+        if( empty ( $_GET['q'])){
+          echo '{ "0":"Bitte ein Zeichen eingeben"}';
+          exit;
         } else {
-            $val = $_GET['val'];
+          $q = $_GET['q'];
         }
+/*   $sCSV = 'includes/plz.csv'; */
+  $sCSV = 'plz.csv';
+  $fp   = fopen( $sCSV , 'r');
+  if( !$fp ){
+    echo '{"0":"Die Datei wurde nicht gefunden"}';
+    exit;
+  }
 
-        $phoneNbrsFile = 'phonebook.txt';
-        $fp = fopen( $phoneNbrsFile, 'r');
 
-        if( !$fp ){
-            echo '{"0":"Die Datei  $phoneNbrsFile wurde nicht gefunden"}' ;           // json ist immer eine Zeichenkette die von js in ein String umgewandelt werden
-            exit;
-        }
+  $arrayOutput = array();
+  $i = 0 ;
+  while ( $arrROW = fgetcsv( $fp )){
+    if ( $i === 0){ $i++ ; continue;  }
 
-        $phoneNbrsArr = array();
-
-        while ( ($phoneNbr = fgets( $fp )) !== false ){
-            if( preg_match( "/^$val/i" , $phoneNbr )){
-                $phoneNbrsArr[] = $phoneNbr;
-            }
-
-        }
-        echo json_encode( $phoneNbrsArr);
-
-        fclose($fp);
-
+    if( preg_match( "/^$q/i", $arrROW[1]) || preg_match( "/^$q/i" , $arrROW[2]) ){
+      $arrayOutput[] = array (
+        'ort'         => $arrROW [1],
+        'plz'         => $arrROW [2],
+        'bundesland'  => $arrROW [3],
+      );
     }
-
-
-
-
-    ?>
-<?php
-
-$json = '
-[
-  {
-    "name": "Aachen",
-    "plz": "52066"
-  },
-  {
-    "name": "Aalen",
-    "plz": "73320"
-  },
-  ...
-]
-';
-
-
-$cities = json_decode($json);
-
-foreach ($cities as $city) {
-  echo $city->name . ' - PLZ: ' . $city->plz . '<br>';
+  }
+  echo.encode
 }
-?>
