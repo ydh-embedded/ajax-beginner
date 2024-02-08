@@ -16,7 +16,7 @@
     --secondary-color-hover:                  #ff9086;
     --secondary-color-focus:                  #fd5a4b;
     --secondary-color-text:                   #ffaba3cb ;
-    --secondary-color-focus-border:           #fd5b4d;
+    --secondary-color-focus-border:           #cf3d30;
     --secondary-color-focus-border-width:         3px;
     --secondary-color-focus-border-radius:        50%;
     --secondary-color-focus-box-shadow:       0 0 0 var(--secondayr-color-focus-border-width) var(--secondayr-color-focus);
@@ -59,14 +59,14 @@ body {
 }
 #output td, #output th {
     border: 1px solid ;
-    border-color: var(--secondary-color);
+    border-color: var(--secondary-color-focus-border);
     padding: 8px;
 }
 #output th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color-focus);
     color: white;
 }
 

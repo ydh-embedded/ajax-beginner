@@ -17,7 +17,10 @@ document.addEventListener("DOMContentLoaded" , _ => {
 function fnCallPHP(){
     let sInputValue = stringInput.value;
     let sURI        = "includes/db.php?q=" + encodeURIComponent ( sInputValue );
-    objXHR.open     ( "get" , sURI , true );
+    console.log('Wir geben sURI an: ' + sURI);
+    
+/*  objXHR.open     ( "post" , sURI , true ); */
+    objXHR.open     (  "get" , sURI , true );
     objXHR.onload   = fnUpdatePage;
     objXHR.send     ( null );
 }
@@ -47,7 +50,9 @@ function fnUpdatePage(){
         }
         
     } catch(error){
-        stringOutput = "kein json String wurde erzeugt" + error;
+        stringOutput = "App.js:52 - Kein json String wurde erzeugt: " + error;
+        console.dir(document.table);
+        console.trace();
     }
     stringElementOutput.innerHTML = stringOutput ;
 }
