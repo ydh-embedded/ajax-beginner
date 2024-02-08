@@ -41,7 +41,7 @@
 
 -   Bezeichner
         -   <code>$_GET</code> superglobale Zeichenkette im key <code>q</code>
-        -   <code>strCSV</code> Pfad zur CSV
+        -   <code>sCSV</code> Pfad zur CSV
         -   <code>fp</code> Datei-Erzeuger
-        -   <code>arrRow</code> Schleifenvariable für Zeilen-Array
-        -   <code>arrOutput</code> Array mit gefilterten Daten aus der CSV-Datei
+        -   <code>arrROW</code> Schleifenvariable für Zeilen-Array
+        -   <code>arrayOutput</code> Array mit gefilterten Daten aus der CSV-Datei

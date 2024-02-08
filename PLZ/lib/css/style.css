@@ -53,15 +53,15 @@ body {
     margin: 8px 0;
     box-sizing: border-box;
 }
-#LIST {
+#output {
     border-collapse: collapse;
     width: 100%;
 }
-#LIST td, #LIST th {
+#output td, #output th {
     border: 1px solid #ddd;
     padding: 8px;
 }
-#LIST th {
+#output th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;

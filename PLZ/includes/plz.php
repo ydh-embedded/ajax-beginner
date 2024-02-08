@@ -1,15 +1,15 @@
 <?php
-#region wir prüfen 
+#region wir prüfen
 if(  empty( $_GET ) ) {
     header('Location: ../index.html');
     } else {
         if( empty ( $_GET['q'])){
-          echo '{ "0":"Bitte ein Zeichen eingeben"}';
+          echo null;
           exit;
         } else {
           $q = $_GET['q'];
         }
-/*   $sCSV = 'includes/plz.csv'; */
+/*$sCSV = 'includes/plz.csv'; */
   $sCSV = 'plz.csv';
   $fp   = fopen( $sCSV , 'r');
   if( !$fp ){
@@ -31,5 +31,6 @@ if(  empty( $_GET ) ) {
       );
     }
   }
-  echo.encode
+  echo json_encode( $arrayOutput);
+  fclose($fp);
 }

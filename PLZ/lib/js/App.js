@@ -1,14 +1,15 @@
 //#region /* variablen und constanten */
-const objXHR = new XMLHttpRequest();
+const objXHR =  new XMLHttpRequest();
 let stringInput             = ""    ;
-let stringElementOutput    = ""    ;
+let stringElementOutput     = ""    ;
 //#endregion
 //#region /* event Listener */
 document.addEventListener("DOMContentLoaded" , _ => {
-    stringInput = document.querySelector("#input") ;
-    stringOutput = document.querySelector("#output") ;
 
-    stringInput.addEventListener("keyup" , fnCallPHP)
+    stringInput     = document.querySelector    ("#search") ;
+    stringElementOutput    = document.querySelector    ("#output") ;
+
+    stringInput.addEventListener ("keyup" , fnCallPHP);
 
 })
 //#endregion
@@ -18,7 +19,7 @@ function fnCallPHP(){
     let sURI        = "includes/plz.php?q=" + encodeURIComponent ( sInputValue );
     objXHR.open     ( "get" , sURI , true );
     objXHR.onload   = fnUpdatePage;
-    objXHR.send     ( null )
+    objXHR.send     ( null );
 }
 
 function fnUpdatePage(){
@@ -26,10 +27,12 @@ function fnUpdatePage(){
     let objResponse = null ;
     let stringOutput =  "" ;
     try{
+        
         if( objResponse = JSON.parse ( objXHR.responseText)){
             console.log('Der json String konnte erzeugt werden');
-
             for( intROW in objResponse){
+                console.log(objResponse[intROW].ort);
+                
                 stringOutput += "<tr>";
                 stringOutput += "<td>" + objResponse[intROW].ort        + "</td>";
                 stringOutput += "<td>" + objResponse[intROW].plz        + "</td>";
@@ -39,7 +42,7 @@ function fnUpdatePage(){
         }
         
     } catch(error){
-        stringOutput = "kein json String wurde erzeugt";
+        stringOutput = "kein json String wurde erzeugt" + error;
     }
     stringElementOutput.innerHTML = stringOutput ;
 }
