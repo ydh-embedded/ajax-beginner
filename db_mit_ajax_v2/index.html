@@ -11,8 +11,7 @@
 <body>
 <header>
 
-    <table>
-
+<table>
     <tr>
         <td>
             <select id="persons">
@@ -22,41 +21,25 @@
             <option value="4">Glenn Quagmire</option>
             </select>
         </td>
-        <td>
-            <select id="songs">
-            <option value="1">Peter Griffin</option>
-            <option value="2">Lois Griffin</option>
-            <option value="3">Joseph Swanson</option>
-            <option value="4">Glenn Quagmire</option>
-            </select>
-        </td>
     </tr>
-
-    </table>
-
+</table>
         <h1>Select</h1>
-
-
-    
-
     </div>
 </header>
 
 
 <div class="container">
-
-
-        <div id="personInfo">
-
-
+    <div class="card" >
+        <div id="personInfo"></div>                                             <!-- Wir geben den String zurück iin diesem DIV mit der ID personInfo -->
+    </div>
 </div>
 
 
 
 
 
+<script>fetchPersonInfo(perso_id)</script>                                      <!-- wir rufen die java-function auf -->
 
-<script>fetchPersonInfo(perso_id)</script>                                      <!-- wir führen die java-function auf -->
 <script src="lib/js/objXHR.js"></script>                                        <!-- wir binden das AJAX - Object ein -->
 </body>
 </html>
