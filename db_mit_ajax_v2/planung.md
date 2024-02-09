@@ -9,21 +9,35 @@
 
 -   Wir starten mit ***index.html***
 -   Über select greifen wir auf eine Auswahl der Personen zu
--   
+
 
 ## Step 3
 
 -   Nutzereingabe vergleichen
 -   Verzeichniss: ***includes/db.php***
+-   wir schauen ob der Query-Schlüssel  <code>$_GET</code> Inhalt enthält
 
--
 
-    function fetchPersonInfo($person_id) {
+        if( ! empty( $_GET ) ) {
+           if ( empty ( $_GET['perso_id']) ) {
+               echo '{ "0":"keine Eingabe" }';
+               exit;
+           } else {
+               $perso_id = $_GET['perso_id'];
+               echo getPersonInfo($perso_id, $UpLink);
+               
+           }
+        }
 
-            // SQL QUERY
-            // Return als JSON Objekt
-    }
-    ?>
+.
+
+        function fetchPersonInfo($person_id) {
+
+                // SQL QUERY
+                // Return als JSON Objekt
+        }
+        ?>
+
 
 ## Step 4
 
