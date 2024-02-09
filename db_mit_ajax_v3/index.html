@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lib/css/style.css">
+    <script src="lib/js/xhrobject.js"></script>
+
+    <title>AJAX</title>
+</head>
+<body>
+<header>        <h1>Select</h1>
+
+        <select id="persons">
+            <option value="1">Peter Griffin</option>
+            <option value="2">Lois Griffin</option>
+            <option value="3">Joseph Swanson</option>
+            <option value="4">Glenn Quagmire</option>
+        </select>
+    
+        
+
+</header>
+<div class="container">
+
+<div class="card" >
+    <div id="personInfo"></div>                                                                     <!-- Wir geben den String zurück iin diesem DIV mit der ID personInfo -->
+</div>
+
+
+</div>
+<script>
+        function fetchPersonInfo(perso_id) {                                                        // Wir wollen AJAX nutzen
+
+            const objXHR = new XMLHttpRequest();
+            objXHR.open('GET', 'includes/db.php?perso_id=' + perso_id, true);
+            objXHR.onload = function () {
+                if (this.status === 200 && this.readyState === 4 ) {
+                    
+                        console.log(this.status);
+                        console.log(this.readyState);
+                        console.log(this.responseText);
+
+
+                    daten = objXHR.responseText;
+                    
+                    
+                    document.getElementById('personInfo').innerHTML = this.responseText;            // Ausgabe der Perso information
+                }
+            };
+            objXHR.send();
+        }
+
+        document.getElementById('persons').addEventListener('change', function () {                 // Event Listener am SELECT Event
+            const perso_id = this.value;
+            fetchPersonInfo(perso_id);
+        });
+
+        function outputPersonInfo(htmlTable) {
+            document.getElementById('personInfo').innerHTML = htmlTable;
+        }
+        
+</script>
+</body>
+</html>
